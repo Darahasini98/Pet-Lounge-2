@@ -94,45 +94,51 @@ export default function Navbar(props) {
     
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-success position-sticky"  style={{ boxShadow: "0px 10px 20px black", filter: 'blur(20)', position: "fixed", zIndex: "10", width: "100%" }}>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-info "  style={{ boxShadow: "0px 10px 20px black", filter: 'blur(20)', zIndex: "10", width: "100%" }}>
                 <div className="container-fluid">
                     <Link className="navbar-brand fs-1 fst-italic" to='/'>PetLounge</Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link className="nav-link active fs-5 mx-3 active" aria-current="page" to='/'>Home</Link>
+                    <ul className="navbar-nav mr-auto ">
+                            <li className="nav-item active">
+                                <Link className="nav-link active fs-5 mx-3 " aria-current="page" to='/'>Home</Link>
                             </li>
 
                             {(localStorage.getItem("authToken")) ?
                                 <li className="nav-item">
-                                    <Link className="nav-link active fs-5" aria-current="page" to='/myOrder'>My Orders</Link>
+                                    <Link className="nav-link active " aria-current="page" to='/myOrder'>My Orders</Link>
                                 </li>
 
-                                : ""}
+                                :""}
                         </ul>
                         {(!localStorage.getItem("authToken")) ?
+                        <li className='nav-item active'>
+                            
                             <div className='d-flex'>
-                                <Link className="btn bg-white text-success mx-1" to='/login'>Login</Link>
-                                <Link className="btn  bg-white text-success mx-1" to='/createUser'>SignUp</Link>
+                                
+                                <Link className="btn bg-white text-info mx-1" to='/login'>Login</Link>
+                                <Link className="btn  bg-white text-info mx-1" to='/createUser'>SignUp</Link>
                             </div>
+                            </li>
                             :
                             <div>
-                                <div className='btn bg-white text-success mx-2' onClick={()=>{setCartView(true)}}>
-                                    My Cart{" "}
-                                    <Badge color="secondary" badgeContent={data.length} >
-                                   
+                                <li className='nav-item active'>
+                                <div className='btn bg-white text-info mx-2' onClick={()=>{setCartView(true)}}>
+                                    My Cart{""}
+                                    <Badge color="white" badgeContent={data.length}>
                                     </Badge>
                                       
                                 </div>
+                                </li>
                                 {cartView?<Model onClose={()=>setCartView(false)} ><Cart/></Model>:""}
-
+                                <li className='nav-item active'>
                                 <div className='btn bg-white text-danger mx-2' onClick={handleLogout}>
                                     Logout
 
                                 </div>
+                                </li>
                             </div>
 
                         }

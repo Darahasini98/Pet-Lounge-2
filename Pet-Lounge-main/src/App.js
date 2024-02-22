@@ -11,6 +11,7 @@ import Register from './screens/Register';
 
 import { CartProvider } from './components/ContextReducer';
 import MyOrder from './screens/MyOrder';
+import Contactus from './components/Contactus';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Route exact path='/login' element={<Login/>}/>
       <Route exact path='/createUser' element={<Register/>}/>
       <Route exact path='/myOrder' element={<MyOrder/>}/>
+      <Route exact path='/Contactus' element={<Contactus/>}/>
       </Routes>
     </div>
     </Router>

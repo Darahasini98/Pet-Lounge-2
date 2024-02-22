@@ -31,7 +31,8 @@ export default function Home() {
   return (
     <div>
       <div><Navbar /></div>
-      <div><div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel" style={{objectFit:"contain !important"}}>
+      <div>
+        <div id="carouselExampleFade" className="carousel slide carousel-fade" data-ride="carousel" style={{objectFit:"contain !important"}}>
         <div className="carousel-inner" id='carousel'>
           <div className='carousel-caption' style={{ zIndex: "10" }}>
 
@@ -43,32 +44,32 @@ export default function Home() {
           </div>
 
           <div className="carousel-item active">
-            <img src="https://img.freepik.com/premium-vector/cat-dog-logo-business-symbol_640381-242.jpg" className="d-block w-100" style={{ filter: "brightness(30%)" }} alt="..." />
+            <img src="https://img.freepik.com/premium-vector/cat-dog-logo-business-symbol_640381-242.jpg" className="d-block w-100 " style={{ filter: "brightness(30%)" }} alt="..." />
           </div>
           <div className="carousel-item">
             <img src="https://img.freepik.com/free-vector/different-pets-concept_23-2148524031.jpg?w=740&t=st=1708450723~exp=1708451323~hmac=012149bbf5a2b1ce0da78b97e69237db6133efd727830f6820d3735bbf7d4890" className="d-block w-100" style={{ filter: "brightness(30%)" }} alt="..." />
           </div>
           <div className="carousel-item">
-            <img src="https://as1.ftcdn.net/v2/jpg/06/30/17/00/1000_F_630170036_7Y8mRJl1C54QV8dJ4KzzMRTV6R8uBu7x.jpg" className="d-block w-100" style={{ filter: "brightness(30%)" }} alt="..." />
+            <img src="https://as1.ftcdn.net/v2/jpg/06/30/17/00/1000_F_630170036_7Y8mRJl1C54QV8dJ4KzzMRTV6R8uBu7x.jpg" className="d-block w-100 " style={{ filter: "brightness(30%)" }} alt="..." />
           </div>
         </div>
-        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <button className="carousel-control-prev" type="button" data-target="#carouselExampleFade" data-slide="prev">
           <span className="carousel-control-prev-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Previous</span>
         </button>
-        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <button className="carousel-control-next" type="button" data-target="#carouselExampleFade" data-slide="next">
           <span className="carousel-control-next-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Next</span>
         </button>
-      </div></div>
-
+      </div>
+      </div>
       <div className='container'>
         {
           petCategory !== [] ?
             petCategory.map((data) => {
               return (
-                <div className='row mb-3'>
-                  <div key={data.id} className='fs-3 m-3'>
+                <div className='row mb-2'>
+                  <div key={data.id} className='fs-3 m-3 text-info fs-2'>
                     {data.petCategory}
                   </div>
                   <hr />
@@ -77,7 +78,7 @@ export default function Home() {
                       petDetails.filter((item) => (item.petCategory === data.petCategory) && (item.petName.toLowerCase().includes(search.toLowerCase()))).map(filterItems => {
                         return (
                          // <div>{filterItems.petName}</div>
-                          <div key={filterItems.id} className='col-12 col-md-6 col-lg-3'>
+                          <div key={filterItems.id} className='col-12 col-sm-auto col-md-auto col-lg-auto'>
                             <Card petName={filterItems.petName} petDetails ={filterItems}
                               options={filterItems.options[0]} img={filterItems.img} >
                             </Card>

@@ -113,7 +113,7 @@ export default function Card(props) {
     const handleAddToCart = async () => {
         let pet = []
         for (const item of data) {
-            if (item.id === props.petDetails._id) {
+            if (item.id === props.petDetails.id) {
                 pet = item;
                 break;
             }
@@ -121,16 +121,16 @@ export default function Card(props) {
         console.log(pet);
         if (pet !== []) {
             if (pet.packages === packages) {
-                await dispatch({ type: "UPDATE", id: props.petDetails._id, price: finalPrice ,days:days})
+                await dispatch({ type: "UPDATE", id: props.petDetails.id, price: finalPrice ,days:days})
                 return
             }
             else if (pet.packages !== packages) {
-                await dispatch({ type: "ADD", id: props.petDetails._id, name: props.petDetails.petName, price: finalPrice, days: days, packages: packages,img:props.petDetails.img })
+                await dispatch({ type: "ADD", id: props.petDetails.id, name: props.petDetails.petName, price: finalPrice, days: days, packages: packages,img:props.petDetails.img })
                 return
             }
             return
         }
-        await dispatch({ type: "ADD", id: props.petDetails._id, name: props.petDetails.petName, price: finalPrice, days: days, packages:packages,img:props.petDetails.img })
+        await dispatch({ type: "ADD", id: props.petDetails.id, name: props.petDetails.petName, price: finalPrice, days: days, packages:packages })
 
     }
 
@@ -140,33 +140,36 @@ export default function Card(props) {
         }, [])
     
         let finalPrice = days * parseInt(options[packages]);
+        //console.log(finalPrice+"&&&&&&&&&&&&&&&");
         return (
             <div>
                 <div>
-                    <div className="card mt-3" style={{ "width": "18rem", "maxHeight": "360px" }}>
+                    <div className="card mt-3 ms-3  " style={{ "width": "20rem", "maxHeight": "500px" }}>
                         <img src={props.petDetails.img} className="card-img-top" alt="..." style={{ height: "120px", objectFit: "fill" }} />
                         <div className="card-body">
-                            <h5 className="card-title">{props.petDetails.petName}</h5>
+                            <h5 className="card-title text-info">{props.petDetails.petName}</h5>
                              <p className="card-text">{props.petDetails.description}</p> 
-                            <div className='container w-70'style={{ height: "38px" }}>
-                            <select className="m-2 h-100 w-20 bg-success text-black rounded" style={{ select: "#FF0000" }} onClick={handleClick} onChange={handleDays}>
+                            <div className='container w-70 d-flex justify-content-center 'style={{ height: "42px" }}>
+                            <select className="m-2 h-100 w-20 bg-info text-white rounded d-flex" style={{ select: "#FF0000" }} onChange={handleDays}>
                             {Array.from(Array(7), (e, i) => {
                                         return (
-                                        <option key={i + 1} value={i + 1}>No.of Days:{i + 1}</option>)
+                                        <option key={i + 1} value={i + 1}>No.Of Days {i + 1}</option>)
                                     })}
                                 </select>
-                                <select className='m-2 h-100 bg-success rounded' ref={priceRef}  onClick={handleClick} onChange={handleOptions}>
-                                    {priceOptions.map((data) => {
-                                        return <option key={data} value={data}>{data}</option>
+                                <select className="m-2 h-100 bg-info text-white rounded" ref={priceRef}   onChange={handleOptions}>
+                                    {priceOptions.map((j) => {
+                                        return <option key={j} value={j}>{j}</option>
                                     })}
                                 </select>
-
-                                <div className=' d-inline ms-2 h-100 w-20 fs-5'>
-                                    ₹{finalPrice}/-
                                 </div>
-                            </div>
-                            <hr />
-                            <button className={'btn btn-success justify-content-center ms-2'} onClick={handleAddToCart}>Move to Basket</button>
+                                <div className=' d-flex mt-4 justify-content-center ms-2 h-100 w-20 fs-5' >
+                                    ₹{finalPrice}/-
+                                    <button className={'btn btn-info justify-content-center ms-2'} onClick={handleAddToCart}>Move to Basket</button>
+
+                                </div>
+                            
+                           
+                            {/* <button className={'btn btn-success justify-content-center ms-2'} onClick={handleAddToCart}>Move to Basket</button> */}
 
                         </div>
                     </div>

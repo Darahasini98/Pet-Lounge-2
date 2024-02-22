@@ -5,9 +5,10 @@ const Order=require('../models/Orders')
 
 router.post('/orderData',async(req,res)=>{
     let data=req.body.order_data
+    console.log(data);
     await data.splice(0,0,{Order_date:req.body.order_date})
     //if email not existing in db then create:else: InsertMany()
-    let eId=await Order.findOne({'useremail':req.body.useremail})
+    let eId=await Order.findOne({useremail:req.body.useremail})
     console.log(eId)
     if(eId===null){
         try{

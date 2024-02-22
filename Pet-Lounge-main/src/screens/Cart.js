@@ -34,7 +34,7 @@ export default function Cart() {
             dispatch({type:"DROP"})
         }
     }
-    let totalPrice = data.reduce((total, pet) => total + (pet.price), 0)
+    let totalPrice = data.reduce((total, petDetails) => total + (petDetails.price), 0)
     return (
         <div>
             <div className='container m-auto mt-5 table-responsive table-responsive-sm  table-respnsive-md'>
@@ -50,13 +50,13 @@ export default function Cart() {
                         </tr>
                     </thead>
                     <tbody className='text-white'>
-                        {data.map((pet, index) => (
+                        {data.map((petDetails, index) => (
                             <tr>
                                 <th scope='row' >{index + 1}</th>
-                                <td >{pet.petName}</td>
-                                <td>{pet.days}</td>
-                                <td>{pet.package}</td>
-                                <td>{pet.price}</td>
+                                <td >{petDetails.petName}</td>
+                                <td>{petDetails.days}</td>
+                                <td>{petDetails.package}</td>
+                                <td>{petDetails.price}</td>
                                 <td ><button type="button" className="btn p-0"><img src={trash} alt="delete" onClick={() => { dispatch({ type: "REMOVE", index: index }) }} /></button> </td></tr>
                                 
                         ))}
