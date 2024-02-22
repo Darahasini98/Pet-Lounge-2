@@ -72,7 +72,7 @@ import React,{useState} from 'react'
 import { Link,useNavigate} from 'react-router-dom'
 import Badge from 'react-bootstrap/Badge';
 //import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { MdOutlineShoppingCart } from "react-icons/md";
+//import { MdOutlineShoppingCart } from "react-icons/md";
 import Model from '../Model';
 import Cart from '../screens/Cart';
 import { useCart } from './ContextReducer';
@@ -123,7 +123,7 @@ export default function Navbar(props) {
                                 <div className='btn bg-white text-success mx-2' onClick={()=>{setCartView(true)}}>
                                     My Cart{" "}
                                     <Badge color="secondary" badgeContent={data.length} >
-                                    <MdOutlineShoppingCart />
+                                   
                                     </Badge>
                                       
                                 </div>

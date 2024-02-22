@@ -70,6 +70,7 @@ export default function Login() {
     });
     const resjson = await response.json()
     console.log(resjson);
+    
 
     if (!resjson.success) {
       alert("enter valid credentials")

@@ -148,7 +148,7 @@ export default function Card(props) {
                         <div className="card-body">
                             <h5 className="card-title">{props.petDetails.petName}</h5>
                              <p className="card-text">{props.petDetails.description}</p> 
-                            <div className='container w-100'style={{ height: "38px" }}>
+                            <div className='container w-70'style={{ height: "38px" }}>
                             <select className="m-2 h-100 w-20 bg-success text-black rounded" style={{ select: "#FF0000" }} onClick={handleClick} onChange={handleDays}>
                             {Array.from(Array(7), (e, i) => {
                                         return (

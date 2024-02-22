@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
 export default function MyOrder() {
-    const [orderData,setOrderData]=useState("");
+    const [orderData,setOrderData]=useState({});
 
     const fetchMyOrder=async()=>{
         //credentials:'include'
